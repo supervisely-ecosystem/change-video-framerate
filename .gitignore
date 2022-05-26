@@ -1,3 +1,6 @@
-.idea
 secret_debug.env
+__pycache__
+.idea
+debug_data
+supervisely
 venv
