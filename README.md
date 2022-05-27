@@ -23,16 +23,18 @@ This app changes framerate for videos in Supervisely video project. It drops (or
 
 <img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/point-up.png" width="20px"/> All annotated data (including tags and objects) will be discarded.
 
-![test](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/video_run.gif)
-
-
-
 ## How To Run
 
 **Step 1**: Add app to your team from Ecosystem if it is not there.
 
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot01.png"/>
+
 **Step 2**: Open context menu of project -> `Run App` -> `Change video framerate` 
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/sshot0.png" width="400px"/>
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot02.png"/>
 
 **Step 3**: Input target framerate (Frames Per Second) and (optionally) name of output project. New videos will be saved in new project of the same workspace.
+
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot03.png"/>
+
+![](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/run-video.gif)
