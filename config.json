@@ -19,7 +19,7 @@
   "headless": true,
   "context_menu": {
     "target": [
-      "videos_project",
+      "videos_project"
     ]
   },
   "poster": "https://i.imgur.com/ro83lnc.jpeg"
