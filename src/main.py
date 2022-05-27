@@ -27,6 +27,10 @@ class FpsVideoInfo:
 
 @sly.timeit
 def change_framerate(api: sly.Api, target_fps, result_project_name):
+    if not result_project_name:
+        project_info = api.project.get_info_by_id(g.PROJECT_ID)
+        result_project_name = '{} {:.3} FPS'.format(project_info.name, target_fps)
+
     src_dir, res_dir = (os.path.join(g.data_directory, n) for n in ('source', 'result'))
     for d in (src_dir, res_dir):
         sly.fs.mkdir(d, remove_content_if_exists=True)
@@ -69,7 +73,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
                 sly.logger.debug('Downloaded video to {}'.format(in_fpath))
                 in_video = VideoFileClip(in_fpath)
                 in_video.write_videofile(out_fpath, fps=target_fps, logger=None)
-                sly.logger.debug('Converted video to {}'.format(in_fpath))
+                sly.logger.debug('Converted video to {}'.format(out_fpath))
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')
             progress.iter_done_report()
