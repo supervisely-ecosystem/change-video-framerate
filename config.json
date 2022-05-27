@@ -1,0 +1,26 @@
+{
+  "name": "Change video framerate",
+  "type": "app",
+  "categories": [
+    "Videos"
+  ],
+  "description": "Change video framerate",
+  "docker_image": "supervisely/base-py-sdk:6.17.4",
+  "main_script": "src/main.py",
+  "modal_template": "src/modal.html",
+  "modal_template_state": {
+    "targetFps": 25,
+    "resultProjectName": "changed_FPS"
+  },
+  "task_location": "workspace_tasks",
+  "icon": "https://i.imgur.com/N1o3bNt.png",
+  "icon_background": "#FFFFFF",
+  "isolate": true,
+  "headless": true,
+  "context_menu": {
+    "target": [
+      "videos_project",
+    ]
+  },
+  "poster": "https://i.imgur.com/ro83lnc.jpeg"
+}

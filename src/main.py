@@ -27,13 +27,9 @@ class FpsVideoInfo:
 
 @sly.timeit
 def change_framerate(api: sly.Api, target_fps, result_project_name):
-    work_dir = 'debug_data/some'  # @TODO what dirs
-    src_dir = os.path.join(work_dir, 'source')
-    res_dir = os.path.join(work_dir, 'result')
+    src_dir, res_dir = (os.path.join(g.data_directory, n) for n in ('source', 'result'))
     for d in (src_dir, res_dir):
         sly.fs.mkdir(d, remove_content_if_exists=True)
-    # for d in (res_dir, ):
-    #     sly.fs.mkdir(d, remove_content_if_exists=True)
 
     meta_json = api.project.get_meta(g.PROJECT_ID)
     meta = sly.ProjectMeta.from_json(meta_json)
@@ -76,18 +72,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
                 sly.logger.debug('Converted video to {}'.format(in_fpath))
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')
-                progress.iter_done_report()
-
-
-    # debug_fname = 'Test Videos_dataset_animals_sea_lion.mp4'
-    # in_video_path = os.path.join(work_dir, debug_fname)
-    # out_video_path = os.path.join(work_dir, '_out_' + debug_fname)
-    # in_video = VideoFileClip(in_video_path)
-    # in_video.write_videofile(out_video_path, fps=target_fps, logger=None)
-
-
-    # sly.download_video_project(api, g.PROJECT_ID, work_dir, log_progress=True)
-
+            progress.iter_done_report()
 
     sly.logger.debug('Finished change_framerate')
 
