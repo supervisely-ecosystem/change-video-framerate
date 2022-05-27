@@ -12,7 +12,7 @@
     "targetFps": 25
   },
   "task_location": "workspace_tasks",
-  "icon": "https://i.imgur.com/N1o3bNt.png",
+  "icon": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-icon.png",
   "icon_background": "#FFFFFF",
   "isolate": true,
   "headless": true,
@@ -21,5 +21,5 @@
       "videos_project"
     ]
   },
-  "poster": "https://i.imgur.com/ro83lnc.jpeg"
+  "poster": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-poster.png"
 }
