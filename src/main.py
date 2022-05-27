@@ -59,6 +59,8 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
                             'Source: {fps0:.5} FPS, {fc0} frames. Expect: {fc1} frames'.format(
                                 ds=dataset.name, vid=video_info.name,
                                 fps0=fps_info.fps, fc0=fps_info.frames_cnt, fc1=expected_frame_cnt))
+            if expected_frame_cnt < 2:
+                raise ValueError('Low FPS value', {'dataset': dataset.id, 'video': video_info.id})
 
             if fps_info.fps_equals(target_fps):
                 sly.logger.debug('Preserving existing frame rate for video {}'.format(video_info.name))
