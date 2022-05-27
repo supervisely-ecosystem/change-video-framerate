@@ -36,4 +36,4 @@ WORKSPACE_ID = int(os.environ["context.workspaceId"])
 PROJECT_ID = int(os.environ["modal.state.slyProjectId"])
 
 TARGET_FPS = float(os.environ['modal.state.targetFps'])
-RES_PROJECT_NAME = os.environ['modal.state.resultProjectName']
+RES_PROJECT_NAME = os.getenv('modal.state.resultProjectName', None)
