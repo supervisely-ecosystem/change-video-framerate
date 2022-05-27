@@ -21,7 +21,7 @@
 
 This app changes framerate for videos in Supervisely video project. It drops (or duplicates) video frames with preserving video duration. The process includes re-coding video. 
 
-<img src="https://github.githubassets.com/images/icons/emoji/unicode/261d.png" width="20px"/> All annotated data (including tags and objects) will be discarded.
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/point-up.png" width="20px"/> All annotated data (including tags and objects) will be discarded.
 
 ## How To Run
 
