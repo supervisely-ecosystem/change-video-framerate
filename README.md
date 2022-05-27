@@ -29,4 +29,6 @@ This app changes framerate for videos in Supervisely video project. It drops (or
 
 **Step 2**: Open context menu of project -> `Run App` -> `Change video framerate` 
 
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/sshot0.png" width="400px"/>
+
 **Step 3**: Input target framerate (Frames Per Second) and (optionally) name of output project. New videos will be saved in new project of the same workspace.
