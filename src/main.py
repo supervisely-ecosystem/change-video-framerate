@@ -59,7 +59,7 @@ def convert_video(target_fps, in_fpath, out_fpath):
 def change_framerate(api: sly.Api, target_fps, result_project_name):
     if not result_project_name:
         project_info = api.project.get_info_by_id(g.PROJECT_ID)
-        result_project_name = '{} {:.3} FPS'.format(project_info.name, target_fps)
+        result_project_name = '{} {:.6g} FPS'.format(project_info.name, target_fps)
 
     src_dir, res_dir = (os.path.join(g.data_directory, n) for n in ('source', 'result'))
     for d in (src_dir, res_dir):
