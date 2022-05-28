@@ -4,7 +4,7 @@ import math
 import supervisely as sly
 from supervisely.video_annotation.key_id_map import KeyIdMap
 
-from moviepy.video.io.VideoFileClip import VideoFileClip
+import ffmpeg
 
 import globals as g
 
@@ -23,6 +23,33 @@ class FpsVideoInfo:
 
     def fps_equals(self, other_fps):
         return abs(other_fps - self.fps) < self.FPS_EPSILON
+
+
+def get_codec_names(f_path):
+    def get_name(stream_type):
+        streams_info = list(filter(lambda x: x['codec_type'] == stream_type, probe_data['streams']))
+        codec_name = streams_info[0]['codec_name'] if streams_info else None
+        return codec_name
+
+    probe_data = ffmpeg.probe(f_path)
+    video_codec_name, audio_codec_name = [get_name(s) for s in ('video', 'audio')]
+    return video_codec_name, audio_codec_name
+
+
+def convert_video(target_fps, in_fpath, out_fpath):
+    video_codec, audio_codec = get_codec_names(in_fpath)
+    sly.logger.debug('Source codecs: Video="{}", Audio="{}"'.format(video_codec, audio_codec))
+
+    ffmpeg_verbosity = {'hide_banner': None, 'loglevel': 'error'}
+    in_video = ffmpeg.input(in_fpath, **ffmpeg_verbosity)
+    video_stream = in_video.video.filter("fps", target_fps)
+
+    stream_list = [video_stream]
+    kwargs = {'vcodec': video_codec, 'x265-params': 'log-level=error'}  # x265 lib bug with loglevel
+    if audio_codec:
+        stream_list.append(in_video.audio)
+        kwargs.update({'acodec': audio_codec, 'strict': -2})    # 'strict' for libvorbis case
+    ffmpeg.output(*stream_list, out_fpath, **kwargs).run()
 
 
 @sly.timeit
@@ -73,8 +100,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
                 api.video.download_path(video_info.id, in_fpath)
                 sly.logger.debug('Downloaded video to {}'.format(in_fpath))
-                in_video = VideoFileClip(in_fpath)
-                in_video.write_videofile(out_fpath, fps=target_fps, logger=None)
+                convert_video(target_fps, in_fpath, out_fpath)
                 sly.logger.debug('Converted video to {}'.format(out_fpath))
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')
