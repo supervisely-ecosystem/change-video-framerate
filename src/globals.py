@@ -17,7 +17,8 @@ sly.logger.info(f"App root directory: {app_root_directory}")
 sys.path.append(app_root_directory)
 
 data_directory = get_data_dir()
-sly.logger.info(f"App data directory: {data_directory}")
+temp_data_directory = os.getenv('DEBUG_TEMPORARY_APP_DIR', '/tmp/sly-app')  # to be removed after task execution
+sly.logger.info(f'App data directory: "{data_directory}"  Temporary data directory: "{temp_data_directory}"')
 
 app = FastAPI()
 sly_app = create()

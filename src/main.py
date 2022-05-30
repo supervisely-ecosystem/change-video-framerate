@@ -13,7 +13,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
         project_info = api.project.get_info_by_id(g.PROJECT_ID)
         result_project_name = '{} {:.6g} FPS'.format(project_info.name, target_fps)
 
-    src_dir, res_dir = (os.path.join(g.data_directory, n) for n in ('source', 'result'))
+    src_dir, res_dir = (os.path.join(g.temp_data_directory, n) for n in ('source', 'result'))
     for d in (src_dir, res_dir):
         sly.fs.mkdir(d, remove_content_if_exists=True)
 
