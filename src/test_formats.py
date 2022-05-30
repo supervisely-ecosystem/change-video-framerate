@@ -26,7 +26,7 @@ def test(target_fps, in_dir, out_dir):
     sly.logger.debug('finished')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     TARGET_FPS = 5
     IN_DIR = 'debug_data/_video_samples'
     OUT_DIR = 'debug_data/recoded_video_samples'

@@ -64,15 +64,15 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
     sly.logger.debug('Finished change_framerate')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     sly.logger.info(
-        "Script arguments",
+        'Script arguments',
         extra={
-            "context.teamId": g.TEAM_ID,
-            "context.workspaceId": g.WORKSPACE_ID,
-            "modal.state.slyProjectId": g.PROJECT_ID,
-            "modal.state.targetFps": g.TARGET_FPS,
-            "modal.state.resultProjectName": g.RES_PROJECT_NAME
+            'context.teamId': g.TEAM_ID,
+            'context.workspaceId': g.WORKSPACE_ID,
+            'modal.state.slyProjectId': g.PROJECT_ID,
+            'modal.state.targetFps': g.TARGET_FPS,
+            'modal.state.resultProjectName': g.RES_PROJECT_NAME
         },
     )
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
     try:
         sly.app.fastapi.shutdown()
     except KeyboardInterrupt:
-        sly.logger.info("Application shutdown successfully")
+        sly.logger.info('Application shutdown successfully')
