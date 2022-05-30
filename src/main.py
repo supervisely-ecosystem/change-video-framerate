@@ -29,10 +29,13 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
     api.project.update_meta(res_project.id, meta_json)
     dummy_map = KeyIdMap()
 
-    for dataset in api.dataset.get_list(g.PROJECT_ID):
+    datasets = api.dataset.get_list(g.PROJECT_ID)
+    progress = sly.Progress('Video recoding', sum(ds.items_count for ds in datasets))
+
+    for dataset in datasets:
         res_dataset = api.dataset.create(res_project.id, dataset.name, change_name_if_conflict=True)
+
         videos = api.video.get_list(dataset.id)
-        progress = sly.Progress('Video recoding', len(videos))
         for video_info in videos:
 
             ann_info = api.video.annotation.download(video_info.id)
@@ -42,7 +45,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
             fps_info = FpsVideoInfo(video_info.frames_to_timecodes)
             expected_frame_cnt = fps_info.expect_frames_cnt(target_fps)
-            sly.logger.info(f'Dataset "{dataset}" Video "{video_info.name}" Source: {fps_info.fps:.5} FPS, '
+            sly.logger.info(f'Dataset "{dataset.name}" Video "{video_info.name}" Source: {fps_info.fps:.5} FPS, '
                             f'{fps_info.frames_cnt} frames. Expect: {expected_frame_cnt} frames')
             if expected_frame_cnt < 2:
                 raise ValueError('Low FPS value', {'dataset': dataset.id, 'video': video_info.id})
