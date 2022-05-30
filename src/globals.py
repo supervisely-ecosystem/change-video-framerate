@@ -1,29 +1,23 @@
 import os
 import sys
 
+if '--DebugImportEnvsFromFiles' in sys.argv:
+    import debug_utils
+    debug_utils.load_envs_from_files()
+
 import supervisely as sly
 
 from fastapi import FastAPI
 from supervisely.app.fastapi import create
+from supervisely.app.content import get_data_dir
 
 
 app_root_directory = os.getcwd()
 sly.logger.info(f"App root directory: {app_root_directory}")
 sys.path.append(app_root_directory)
 
-data_directory = '/var/sly-app'   # @TODO: ok?
-
-# debug code BEGIN
-# from dotenv import load_dotenv
-#
-# debug_env_path = os.path.join(app_root_directory, "debug.env")
-# secret_debug_env_path = os.path.join(app_root_directory, "secret_debug.env")
-# load_dotenv(debug_env_path)
-# load_dotenv(secret_debug_env_path, override=True)
-# sly.logger.setLevel(os.environ['LOG_LEVEL'].upper())    # because sly logger has been already initialized
-# data_directory = os.environ['LOCAL_DEBUG_DATA_DIR']
-# debug code END
-
+data_directory = get_data_dir()
+sly.logger.info(f"App data directory: {data_directory}")
 
 app = FastAPI()
 sly_app = create()
