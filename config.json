@@ -11,6 +11,11 @@
   "modal_template_state": {
     "targetFps": 25
   },
+  "modal_template_data": {
+    "resultProjectName": {
+      "description": "Optional. If not set it will be named like \"original_project 25 FPS\"."
+    }
+  },
   "task_location": "workspace_tasks",
   "icon": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-icon.png",
   "icon_background": "#FFFFFF",

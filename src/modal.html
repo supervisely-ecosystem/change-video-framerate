@@ -1,9 +1,8 @@
-<sly-field
-          title="Change frame rate:">
+<sly-field>
     <sly-field title="Target FPS">
       <el-input-number v-model="state.targetFps" :min="0.1" max=200></el-input-number>
     </sly-field>
-    <sly-field title="Result project name">
+    <sly-field title="New project name" :description="data.resultProjectName.description">
       <el-input v-model="state.resultProjectName"></el-input>
     </sly-field>
 </sly-field>
