@@ -14,7 +14,6 @@
   "task_location": "workspace_tasks",
   "icon": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-icon.png",
   "icon_background": "#FFFFFF",
-  "isolate": true,
   "headless": true,
   "context_menu": {
     "target": [
