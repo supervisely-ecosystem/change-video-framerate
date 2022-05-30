@@ -1,10 +1,6 @@
 import os
 import sys
 
-if '--DebugImportEnvsFromFiles' in sys.argv:
-    import debug_utils
-    debug_utils.load_envs_from_files()
-
 import supervisely as sly
 
 from fastapi import FastAPI

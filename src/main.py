@@ -1,4 +1,9 @@
 import os
+import sys
+
+if '--DebugImportEnvsFromFiles' in sys.argv:
+    import debug_utils
+    debug_utils.load_envs_from_files()
 
 import supervisely as sly
 from supervisely.video_annotation.key_id_map import KeyIdMap
@@ -37,8 +42,8 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
             fps_info = FpsVideoInfo(video_info.frames_to_timecodes)
             expected_frame_cnt = fps_info.expect_frames_cnt(target_fps)
-            sly.logger.info(f'Dataset "{dataset}" Video "{video_info.name}" '
-                            f'Source: {fps_info.fps:.5} FPS, {fps_info.frames_cnt} frames. Expect: {expected_frame_cnt} frames')
+            sly.logger.info(f'Dataset "{dataset}" Video "{video_info.name}" Source: {fps_info.fps:.5} FPS, '
+                            f'{fps_info.frames_cnt} frames. Expect: {expected_frame_cnt} frames')
             if expected_frame_cnt < 2:
                 raise ValueError('Low FPS value', {'dataset': dataset.id, 'video': video_info.id})
 
