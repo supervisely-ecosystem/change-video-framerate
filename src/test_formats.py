@@ -11,7 +11,7 @@ def print_info(f_path):
     vstream = next(filter(lambda x: x['codec_type'] == 'video', probe_data['streams']))
     info = {k: probe_data['format'][k] for k in ('duration', 'bit_rate', 'size')}
     info.update({k: vstream[k] for k in ('nb_read_frames', 'r_frame_rate', 'avg_frame_rate')})
-    sly.logger.debug(f'ffmpeg.probe "{f_path}"', extra=info)
+    sly.logger.debug(f'ffmpeg.probe {f_path!r}', extra=info)
 
 
 def test(target_fps, in_dir, out_dir):

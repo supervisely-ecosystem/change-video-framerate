@@ -41,17 +41,17 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
             ann_info = api.video.annotation.download(video_info.id)
             ann = sly.VideoAnnotation.from_json(ann_info, meta, dummy_map)
             if ann.frames.figures or ann.objects:
-                sly.logger.warn(f'Annotation data from video "{video_info.name}" will be discarded.')
+                sly.logger.warn(f'Annotation data from video {video_info.name!r} will be discarded.')
 
             fps_info = FpsVideoInfo(video_info.frames_to_timecodes)
             expected_frame_cnt = fps_info.expect_frames_cnt(target_fps)
-            sly.logger.info(f'Dataset "{dataset.name}" Video "{video_info.name}" Source: {fps_info.fps:.5} FPS, '
+            sly.logger.info(f'Dataset {dataset.name!r} Video {video_info.name!r} Source: {fps_info.fps:.5} FPS, '
                             f'{fps_info.frames_cnt} frames. Expect: {expected_frame_cnt} frames')
             if expected_frame_cnt < 2:
                 raise ValueError('Low FPS value', {'dataset': dataset.id, 'video': video_info.id})
 
             if fps_info.fps_equals(target_fps):
-                sly.logger.debug(f'Preserving existing frame rate for video "{video_info.name}"')
+                sly.logger.debug(f'Preserving existing frame rate for video {video_info.name!r}')
                 api.video.upload_hash(res_dataset.id, video_info.name, video_info.hash)
             else:
                 curr_dirs = [os.path.join(d, dataset.name) for d in (src_dir, res_dir)]
@@ -60,9 +60,9 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
                 in_fpath, out_fpath = [os.path.join(d, video_info.name) for d in curr_dirs]
 
                 api.video.download_path(video_info.id, in_fpath)
-                sly.logger.debug(f'Downloaded video to "{in_fpath}"')
+                sly.logger.debug(f'Downloaded video to {in_fpath!r}')
                 convert_video(target_fps, in_fpath, out_fpath)
-                sly.logger.debug(f'Converted video to "{out_fpath}"')
+                sly.logger.debug(f'Converted video to {out_fpath!r}')
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')
             progress.iter_done_report()

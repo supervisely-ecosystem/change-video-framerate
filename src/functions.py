@@ -35,7 +35,7 @@ def get_encoding_info(f_path):
 
 def convert_video(target_fps, in_fpath, out_fpath):
     video_codec, audio_codec, bitrate = get_encoding_info(in_fpath)
-    sly.logger.debug(f'Source codecs: Video="{video_codec}", Audio="{audio_codec}" Source bitrate: {bitrate} bps')
+    sly.logger.debug(f'Source codecs: Video={video_codec!r}, Audio={audio_codec!r} Source bitrate: {bitrate} bps')
 
     ffmpeg_verbosity = {'hide_banner': None, 'loglevel': 'error'}
     in_video = ffmpeg.input(in_fpath, **ffmpeg_verbosity)

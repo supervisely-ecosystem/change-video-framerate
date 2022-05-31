@@ -9,12 +9,12 @@ from supervisely.app.content import get_data_dir
 
 
 app_root_directory = os.getcwd()
-sly.logger.info(f'App root directory: {app_root_directory}')
+sly.logger.info(f'App root directory: {app_root_directory!r}')
 sys.path.append(app_root_directory)
 
 data_directory = get_data_dir()
 temp_data_directory = os.getenv('DEBUG_TEMPORARY_APP_DIR', '/tmp/sly-app')  # to be removed after task execution
-sly.logger.info(f'App data directory: "{data_directory}"  Temporary data directory: "{temp_data_directory}"')
+sly.logger.info(f'App data directory: {data_directory!r}  Temporary data directory: {temp_data_directory!r}')
 
 app = FastAPI()
 sly_app = create()
