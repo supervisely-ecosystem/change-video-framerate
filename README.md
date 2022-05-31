@@ -38,6 +38,6 @@ The process includes re-coding video. Besides, duration of the resulting video m
 
 **Step 3**: Input target framerate (Frames Per Second) and (optionally) name of output project. New videos will be saved in new project of the same workspace.
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot03.png"/>
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot03.png" width=500px/>
 
 ![](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/run-video.gif)
