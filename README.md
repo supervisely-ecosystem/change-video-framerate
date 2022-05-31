@@ -30,14 +30,14 @@ The process includes re-coding video. Besides, duration of the resulting video m
 
 **Step 1**: Add app to your team from Ecosystem if it is not there.
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot01.png"/>
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot01.png"/>
 
 **Step 2**: Open context menu of project -> `Run App` -> `Change video framerate` 
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot02.png"/>
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot02.png"/>
 
 **Step 3**: Input target framerate (Frames Per Second) and (optionally) name of output project. New videos will be saved in new project of the same workspace.
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/shot03.png"/>
+<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot03.png"/>
 
-![](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.3.0/run-video.gif)
+![](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/run-video.gif)
