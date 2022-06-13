@@ -2,7 +2,8 @@
   "name": "Change video framerate",
   "type": "app",
   "categories": [
-    "Videos"
+    "videos",
+    "data transformation"
   ],
   "description": "Change video framerate with preserving duration (recodes video)",
   "docker_image": "supervisely/base-py-sdk:6.17.4",
