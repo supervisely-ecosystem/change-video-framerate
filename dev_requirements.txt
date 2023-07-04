@@ -1,0 +1,2 @@
+supervisely[apps]==6.72.56
+ffmpeg_python==0.2.0
