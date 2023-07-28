@@ -1,31 +1,31 @@
 {
-  "name": "Change video framerate",
-  "type": "app",
-  "categories": [
-    "videos",
-    "data transformation",
-    "data operations"
-  ],
-  "description": "Change video framerate with preserving duration (recodes video)",
-  "docker_image": "supervisely/base-py-sdk:6.35.0",
-  "main_script": "src/main.py",
-  "modal_template": "src/modal.html",
-  "modal_template_state": {
-    "targetFps": 25
-  },
-  "modal_template_data": {
-    "resultProjectName": {
-      "description": "Optional. If not set it will be named like \"original_project 25 FPS\"."
-    }
-  },
-  "task_location": "workspace_tasks",
-  "icon": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-icon.png",
-  "icon_background": "#FFFFFF",
-  "headless": true,
-  "context_menu": {
-    "target": [
-      "videos_project"
-    ]
-  },
-  "poster": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-poster.png"
+    "name": "Change video framerate",
+    "type": "app",
+    "categories": [
+        "videos",
+        "data transformation",
+        "data operations"
+    ],
+    "description": "Change video framerate with preserving duration (recodes video)",
+    "docker_image": "supervisely/data-operations:0.0.3",
+    "main_script": "src/main.py",
+    "modal_template": "src/modal.html",
+    "modal_template_state": {
+        "targetFps": 25
+    },
+    "modal_template_data": {
+        "resultProjectName": {
+            "description": "Optional. If not set it will be named like \"original_project 25 FPS\"."
+        }
+    },
+    "task_location": "workspace_tasks",
+    "icon": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-icon.png",
+    "icon_background": "#FFFFFF",
+    "headless": true,
+    "context_menu": {
+        "target": [
+            "videos_project"
+        ]
+    },
+    "poster": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-poster.png"
 }
