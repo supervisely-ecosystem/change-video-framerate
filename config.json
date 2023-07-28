@@ -7,7 +7,7 @@
         "data operations"
     ],
     "description": "Change video framerate with preserving duration (recodes video)",
-    "docker_image": "supervisely/data-operations:0.0.1",
+    "docker_image": "supervisely/data-operations:0.0.3",
     "main_script": "src/main.py",
     "modal_template": "src/modal.html",
     "modal_template_state": {
