@@ -52,7 +52,8 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
             if fps_info.fps_equals(target_fps):
                 sly.logger.debug(f'Preserving existing frame rate for video {video_info.name!r}')
-                api.video.upload_hash(res_dataset.id, video_info.name, video_info.hash)
+                api.video.upload_id(res_dataset.id, video_info.name, video_info.id)
+                # api.video.upload_hash(res_dataset.id, video_info.name, video_info.hash)
             else:
                 curr_dirs = [os.path.join(d, dataset.name) for d in (src_dir, res_dir)]
                 for d in curr_dirs:
