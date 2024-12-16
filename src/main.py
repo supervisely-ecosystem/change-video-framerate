@@ -15,11 +15,12 @@ from functions import FpsVideoInfo, convert_video
 @sly.timeit
 def change_framerate(api: sly.Api, target_fps, result_project_name):
     
-    if g.DATASET_ID and g.PROJECT_ID is None:
+    if g.DATASET_ID:
         datasets = [api.dataset.get_info_by_id(g.DATASET_ID)]
-        g.PROJECT_ID = datasets[0].project_id
+        sly.logger.info(f'Processing single dataset ID {g.DATASET_ID} in project ID {g.PROJECT_ID}')
     else:
         datasets = api.dataset.get_list(g.PROJECT_ID)
+        sly.logger.info(f'Processing all datasets in project ID {g.PROJECT_ID}')
 
     if not result_project_name:
         project_info = api.project.get_info_by_id(g.PROJECT_ID)
