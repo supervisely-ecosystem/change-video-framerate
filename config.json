@@ -13,8 +13,8 @@
     "modal_template": "src/modal.html",
     "modal_template_state": {
         "targetFps": 25,
-        "targetResolutionWidth": 1024,
-        "targetResolutionHeight": 768,
+        "targetResolutionWidth": 1280,
+        "targetResolutionHeight": 720,
         "changeResolution": false
     },
     "modal_template_data": {
