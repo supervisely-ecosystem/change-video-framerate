@@ -43,6 +43,7 @@ def convert_video(target_fps, in_fpath, out_fpath, target_resolution=None):
     video_stream = in_video.video.filter("fps", target_fps)
 
     if g.CHANGE_RESOLUTION:
+        sly.logger.info(f'Changing resolution to {target_resolution[0]}x{target_resolution[1]}')
         video_stream = video_stream.filter('scale', target_resolution[0], target_resolution[1]) # width, height
 
     stream_list = [video_stream]
