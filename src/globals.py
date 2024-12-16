@@ -30,8 +30,8 @@ DATASET_ID = os.environ.get('modal.state.slyDatasetId', None)
 if DATASET_ID is not None:
     DATASET_ID = int(DATASET_ID)
 CHANGE_RESOLUTION = bool(strtobool(os.environ.get('modal.state.changeResolution', 'false')))
-TARGET_HEIGHT = int(os.environ.get('modal.state.targetResolutionHeight'), 1280)
-TARGET_WIDTH = int(os.environ.get('modal.state.targetResolutionWidth'), 720)
+TARGET_HEIGHT = int(os.environ.get('modal.state.targetResolutionHeight', 1280))
+TARGET_WIDTH = int(os.environ.get('modal.state.targetResolutionWidth', 720))
 target_resolution = (TARGET_WIDTH, TARGET_HEIGHT)
 
 TARGET_FPS = float(os.environ['modal.state.targetFps'])
