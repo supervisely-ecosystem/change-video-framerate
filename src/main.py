@@ -14,6 +14,13 @@ from functions import FpsVideoInfo, convert_video
 
 @sly.timeit
 def change_framerate(api: sly.Api, target_fps, result_project_name):
+    
+    if g.DATASET_ID and g.PROJECT_ID is None:
+        datasets = [api.dataset.get_info_by_id(g.DATASET_ID)]
+        g.PROJECT_ID = datasets[0].project_id
+    else:
+        datasets = api.dataset.get_list(g.PROJECT_ID)
+
     if not result_project_name:
         project_info = api.project.get_info_by_id(g.PROJECT_ID)
         result_project_name = f'{project_info.name} {target_fps:.6g} FPS'
@@ -29,7 +36,6 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
     api.project.update_meta(res_project.id, meta_json)
     dummy_map = KeyIdMap()
 
-    datasets = api.dataset.get_list(g.PROJECT_ID)
     progress = sly.Progress('Video recoding', sum(ds.items_count for ds in datasets))
 
     for dataset in datasets:

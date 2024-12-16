@@ -25,6 +25,7 @@ TASK_ID = int(os.environ['TASK_ID'])
 TEAM_ID = int(os.environ['context.teamId'])
 WORKSPACE_ID = int(os.environ['context.workspaceId'])
 PROJECT_ID = int(os.environ['modal.state.slyProjectId'])
+DATASET_ID = int(os.environ['modal.state.slyDatasetId'])
 
 TARGET_FPS = float(os.environ['modal.state.targetFps'])
 RES_PROJECT_NAME = os.getenv('modal.state.resultProjectName', None)
