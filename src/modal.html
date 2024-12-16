@@ -1,8 +1,18 @@
 <sly-field>
     <sly-field title="Target FPS">
-      <el-input-number v-model="state.targetFps" :min="0.1" max=200></el-input-number>
+      <el-input-number v-model="state.targetFps" :min="0.1" :max=200></el-input-number>
     </sly-field>
-    <sly-field title="New project name" :description="data.resultProjectName.description">
+    <sly-field title="New Project Name" :description="data.resultProjectName.description">
       <el-input v-model="state.resultProjectName"></el-input>
+    </sly-field>
+    <sly-field title="Change Resolution Settings">
+      <el-switch v-model="state.changeResolution"></el-switch>
+    </sly-field>
+    <sly-field v-if="state.changeResolution" title="Resolution Width x Height">
+      <div style="display: flex; align-items: center;">
+          <el-input-number v-model="state.targetResolutionWidth" :min=24 :max=5000></el-input-number>
+          <span style="margin: 0 10px;">x</span>
+          <el-input-number v-model="state.targetResolutionHeight" :min=24 :max=5000></el-input-number>
+      </div>
     </sly-field>
 </sly-field>

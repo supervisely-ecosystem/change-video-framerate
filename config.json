@@ -12,7 +12,10 @@
     "main_script": "src/main.py",
     "modal_template": "src/modal.html",
     "modal_template_state": {
-        "targetFps": 25
+        "targetFps": 25,
+        "targetResolutionWidth": 1024,
+        "targetResolutionHeight": 768,
+        "changeResolution": false
     },
     "modal_template_data": {
         "resultProjectName": {
