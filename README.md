@@ -18,8 +18,9 @@
   
 ## Overview
 
-News:<br>
-🎉 `v0.8.0` it's possible to change output video resolution 
+🎉 New in `v0.8.0`:
+ - It's possible to change output video resolution 
+ - You could change videos for single dataset
 
 This app changes framerate for videos in Supervisely video project. It drops (or duplicates) video frames with preserving video duration.
 
