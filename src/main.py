@@ -69,7 +69,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
                 api.video.download_path(video_info.id, in_fpath)
                 sly.logger.debug(f'Downloaded video to {in_fpath!r}')
-                convert_video(target_fps, in_fpath, out_fpath)
+                convert_video(target_fps, in_fpath, out_fpath, g.target_resolution)
                 sly.logger.debug(f'Converted video to {out_fpath!r}')
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')

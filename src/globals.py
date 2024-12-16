@@ -6,6 +6,7 @@ import supervisely as sly
 from fastapi import FastAPI
 from supervisely.app.fastapi import create
 from supervisely.app.content import get_data_dir
+from distutils.util import strtobool
 
 
 app_root_directory = os.getcwd()
@@ -26,7 +27,7 @@ TEAM_ID = int(os.environ['context.teamId'])
 WORKSPACE_ID = int(os.environ['context.workspaceId'])
 PROJECT_ID = int(os.environ['modal.state.slyProjectId'])
 DATASET_ID = int(os.environ['modal.state.slyDatasetId'])
-CHANGE_RESOLUTION = os.environ['modal.state.changeResolution']
+CHANGE_RESOLUTION = bool(strtobool(os.environ['modal.state.changeResolution']))
 TARGET_HEIGHT = int(os.environ['modal.state.targetResolutionHeight'])
 TARGET_WIDTH = int(os.environ['modal.state.targetResolutionWidth'])
 target_resolution = (TARGET_WIDTH, TARGET_HEIGHT)
