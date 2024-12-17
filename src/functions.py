@@ -3,6 +3,7 @@ import math
 import supervisely as sly
 
 import ffmpeg
+import globals as g
 
 
 class FpsVideoInfo:
@@ -33,13 +34,17 @@ def get_encoding_info(f_path):
     return video_codec_name, audio_codec_name, bitrate
 
 
-def convert_video(target_fps, in_fpath, out_fpath):
+def convert_video(target_fps, in_fpath, out_fpath, target_resolution=None):
     video_codec, audio_codec, bitrate = get_encoding_info(in_fpath)
     sly.logger.debug(f'Source codecs: Video={video_codec!r}, Audio={audio_codec!r} Source bitrate: {bitrate} bps')
 
     ffmpeg_verbosity = {'hide_banner': None, 'loglevel': 'error'}
     in_video = ffmpeg.input(in_fpath, **ffmpeg_verbosity)
     video_stream = in_video.video.filter("fps", target_fps)
+
+    if g.CHANGE_RESOLUTION:
+        sly.logger.info(f'Changing resolution to {target_resolution[0]}x{target_resolution[1]}')
+        video_stream = video_stream.filter('scale', target_resolution[0], target_resolution[1]) # width, height
 
     stream_list = [video_stream]
     kwargs = {'vcodec': video_codec, 'video_bitrate': bitrate,

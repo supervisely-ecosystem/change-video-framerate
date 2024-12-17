@@ -7,11 +7,15 @@
         "data operations"
     ],
     "description": "Change video framerate with preserving duration (recodes video)",
-    "docker_image": "supervisely/data-operations:6.72.157",
+    "docker_image": "supervisely/data-operations:6.73.256",
+    "instance_version": "6.12.12",
     "main_script": "src/main.py",
     "modal_template": "src/modal.html",
     "modal_template_state": {
-        "targetFps": 25
+        "targetFps": 25,
+        "targetResolutionWidth": 1280,
+        "targetResolutionHeight": 720,
+        "changeResolution": false
     },
     "modal_template_data": {
         "resultProjectName": {
@@ -24,7 +28,8 @@
     "headless": true,
     "context_menu": {
         "target": [
-            "videos_project"
+            "videos_project",
+            "videos_dataset"
         ]
     },
     "poster": "https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/app-poster.png"

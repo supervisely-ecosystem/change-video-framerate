@@ -18,6 +18,10 @@
   
 ## Overview
 
+🎉 New in `v0.8.0`:
+ - It's possible to change output video resolution 
+ - You could change videos for single dataset
+
 This app changes framerate for videos in Supervisely video project. It drops (or duplicates) video frames with preserving video duration.
 
 <img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.1.0/point-up.png" width="20px"/> All annotated data (including tags and objects) will be discarded.
@@ -33,10 +37,11 @@ The process includes re-coding video. Besides, duration of the resulting video m
 
 **Step 2**: Open context menu of project -> `Run App` -> `Change video framerate` 
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot02.png"/>
+<img src="https://github.com/user-attachments/assets/4f7c9351-a50f-4c98-aa00-914a4ee59083"/>
 
 **Step 3**: Input target framerate (Frames Per Second) and (optionally) name of output project. New videos will be saved in new project of the same workspace.
 
-<img src="https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/shot03.png" width=500px/>
+If you want to change the resolution of the output video, enable this option `ON` and adjust the `Width` and `Height`.
 
-![](https://github.com/supervisely-ecosystem/change-video-framerate/releases/download/v0.7.0/run-video.gif)
+<img src="https://github.com/user-attachments/assets/776e7262-078c-4299-8c33-a353716ef0f3" width=500px/>
+

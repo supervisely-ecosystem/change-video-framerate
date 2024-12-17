@@ -14,6 +14,14 @@ from functions import FpsVideoInfo, convert_video
 
 @sly.timeit
 def change_framerate(api: sly.Api, target_fps, result_project_name):
+    
+    if g.DATASET_ID:
+        datasets = [api.dataset.get_info_by_id(g.DATASET_ID)]
+        sly.logger.info(f'Processing single dataset ID {g.DATASET_ID} in project ID {g.PROJECT_ID}')
+    else:
+        datasets = api.dataset.get_list(g.PROJECT_ID)
+        sly.logger.info(f'Processing all datasets in project ID {g.PROJECT_ID}')
+
     if not result_project_name:
         project_info = api.project.get_info_by_id(g.PROJECT_ID)
         result_project_name = f'{project_info.name} {target_fps:.6g} FPS'
@@ -29,7 +37,6 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
     api.project.update_meta(res_project.id, meta_json)
     dummy_map = KeyIdMap()
 
-    datasets = api.dataset.get_list(g.PROJECT_ID)
     progress = sly.Progress('Video recoding', sum(ds.items_count for ds in datasets))
 
     for dataset in datasets:
@@ -62,7 +69,7 @@ def change_framerate(api: sly.Api, target_fps, result_project_name):
 
                 api.video.download_path(video_info.id, in_fpath)
                 sly.logger.debug(f'Downloaded video to {in_fpath!r}')
-                convert_video(target_fps, in_fpath, out_fpath)
+                convert_video(target_fps, in_fpath, out_fpath, g.target_resolution)
                 sly.logger.debug(f'Converted video to {out_fpath!r}')
                 api.video.upload_paths(res_dataset.id, (video_info.name,), (out_fpath,))
                 sly.logger.debug('Uploaded video')
